@@ -31,4 +31,8 @@ interface TodoApi {
     @PutMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     Todo update(@PathVariable String id, @RequestBody Todo todo);
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void delete(@PathVariable String id);
 }
