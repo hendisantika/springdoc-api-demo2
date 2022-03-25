@@ -35,4 +35,15 @@ class TodoController implements TodoApi {
         todos.add(todo);
         return todo;
     }
+
+    @Override
+    public Todo update(String id, Todo todo) {
+        for (Todo t : todos) {
+            if (t.getId().equals(id)) {
+                t.setText(todo.getText());
+            }
+        }
+
+        return todo;
+    }
 }
