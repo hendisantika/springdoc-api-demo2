@@ -6,6 +6,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : springdoc-api-demo2
@@ -19,7 +21,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/todos")
 @Tag(name = "Todo API", description = "euismod in pellentesque massa placerat duis ultricies lacus sed turpis")
 @SecurityRequirement(name = "api")
-interface TodoApi {
+public interface TodoApi {
+    @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
+    List<Todo> findAll();
+
     @GetMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     Todo findById(@PathVariable String id);
