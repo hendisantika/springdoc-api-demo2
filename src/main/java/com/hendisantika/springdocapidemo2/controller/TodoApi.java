@@ -48,18 +48,86 @@ public interface TodoApi {
     List<Todo> findAll();
 
     @GetMapping("/{id}")
+    @Operation(
+            summary = "List Todo by ID",
+            description = "List Todo by ID.",
+            tags = {"Todo"})
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    description = "Success",
+                    responseCode = "200",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation =
+                            Todo.class))
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Not found", responseCode = "404",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Internal error", responseCode = "500"
+                    , content = @Content)
+    }
+    )
     @ResponseStatus(code = HttpStatus.OK)
     Todo findById(@PathVariable String id);
 
     @PostMapping
+    @Operation(
+            summary = "Add New Todo",
+            description = "Add New Todo.",
+            tags = {"Todo"})
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    description = "Success",
+                    responseCode = "200",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation =
+                            Todo.class))
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Not found", responseCode = "404",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Internal error", responseCode = "500"
+                    , content = @Content)
+    }
+    )
     @ResponseStatus(code = HttpStatus.CREATED)
     Todo save(@RequestBody Todo todo);
 
     @PutMapping("/{id}")
+    @Operation(
+            summary = "Update Todo",
+            description = "Update Todo.",
+            tags = {"Todo"})
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    description = "Success",
+                    responseCode = "200",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation =
+                            Todo.class))
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Not found", responseCode = "404",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Internal error", responseCode = "500"
+                    , content = @Content)
+    }
+    )
     @ResponseStatus(code = HttpStatus.OK)
     Todo update(@PathVariable String id, @RequestBody Todo todo);
 
     @DeleteMapping("/{id}")
+    @Operation(
+            summary = "Delete Todo",
+            description = "Delete Todo.",
+            tags = {"Todo"})
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    description = "Success",
+                    responseCode = "200",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation =
+                            Todo.class))
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Not found", responseCode = "404",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Internal error", responseCode = "500"
+                    , content = @Content)
+    }
+    )
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void delete(@PathVariable String id);
 }
