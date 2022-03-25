@@ -4,10 +4,7 @@ import com.hendisantika.springdocapidemo2.model.Todo;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,4 +23,8 @@ interface TodoApi {
     @GetMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     Todo findById(@PathVariable String id);
+
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    Todo save(@RequestBody Todo todo);
 }
