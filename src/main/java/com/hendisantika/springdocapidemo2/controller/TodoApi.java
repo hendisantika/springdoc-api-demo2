@@ -23,7 +23,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @RequestMapping("/api/todos")
-@Tag(name = "Todo API", description = "API for managing Todo")
+@Tag(name = "Todo", description = "API for managing Todo")
 @SecurityRequirement(name = "api")
 public interface TodoApi {
     @GetMapping
