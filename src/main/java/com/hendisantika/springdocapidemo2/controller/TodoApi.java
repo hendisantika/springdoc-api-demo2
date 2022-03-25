@@ -27,4 +27,8 @@ interface TodoApi {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     Todo save(@RequestBody Todo todo);
+
+    @PutMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    Todo update(@PathVariable String id, @RequestBody Todo todo);
 }
