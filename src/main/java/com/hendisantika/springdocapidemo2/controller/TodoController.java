@@ -19,4 +19,9 @@ import java.util.List;
 class TodoController implements TodoApi {
 
     private List<Todo> todos;
+
+    @Override
+    public List<Todo> findAll() {
+        return todos;
+    }
 }
