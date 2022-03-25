@@ -1,6 +1,10 @@
 package com.hendisantika.springdocapidemo2.controller;
 
 import com.hendisantika.springdocapidemo2.model.Todo;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -19,10 +23,27 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @RequestMapping("/api/todos")
-@Tag(name = "Todo API", description = "euismod in pellentesque massa placerat duis ultricies lacus sed turpis")
+@Tag(name = "Todo API", description = "API for managing Todo")
 @SecurityRequirement(name = "api")
 public interface TodoApi {
     @GetMapping
+    @Operation(
+            summary = "List All Todos",
+            description = "List All Todos.",
+            tags = {"Todo"})
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    description = "Success",
+                    responseCode = "200",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation =
+                            Todo.class))
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Not found", responseCode = "404",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Internal error", responseCode = "500"
+                    , content = @Content)
+    }
+    )
     @ResponseStatus(code = HttpStatus.OK)
     List<Todo> findAll();
 
