@@ -46,4 +46,9 @@ class TodoController implements TodoApi {
 
         return todo;
     }
+
+    @Override
+    public void delete(String id) {
+        todos.removeIf(t -> t.getId().equals(id));
+    }
 }
